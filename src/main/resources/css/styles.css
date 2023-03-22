@@ -1,3 +1,9 @@
-.background {
-    -fx-background-color: purple;
+.menu-container {
+    -fx-padding: 10px;
+    -fx-background-color: #333333;
+}
+
+.label {
+    -fx-text-fill: #CCCCCC;
+    -fx-font-size: 20px;
 }
