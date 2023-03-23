@@ -1,19 +1,15 @@
 package ch.francescoryu.quizzie.menu;
 
-import ch.francescoryu.quizzie.database.DatabaseConnection;
 import ch.francescoryu.quizzie.quiz.CreateQuiz;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Menu extends VBox {
@@ -27,23 +23,33 @@ public class Menu extends VBox {
         //--------------------------------------------
         Button createQuizButton = new Button("Create");
         VBox createButtonBox = new VBox(createQuizButton);
-        createButtonBox.setMinWidth(300);
-        createButtonBox.setStyle("-fx-border-color: white");
+        createButtonBox.setMinWidth(250);
         createButtonBox.setAlignment(Pos.TOP_CENTER);
+
+        VBox leftBox = new VBox();
+        leftBox.setAlignment(Pos.TOP_CENTER);
+
+        Label createQuizLabel = new Label("Create Area");
+        leftBox.getChildren().addAll(createQuizLabel, createButtonBox);
         //--------------------------------------------
         VBox quizButtonBox = CreateQuiz.createQuiz();
-        quizButtonBox.setStyle("-fx-border-color: red");
         quizButtonBox.setAlignment(Pos.TOP_CENTER);
+        quizButtonBox.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+        quizButtonBox.setSpacing(5);
         ScrollPane scrollPane = new ScrollPane(quizButtonBox);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
         scrollPane.setFitToWidth(true);
+
         VBox rightBox = new VBox();
+
         Label selectQuizLabel = new Label("Select Quiz");
         rightBox.getChildren().addAll(selectQuizLabel, scrollPane);
         rightBox.setAlignment(Pos.TOP_CENTER);
         //--------------------------------------------
         HBox contentBox = new HBox();
-        contentBox.getChildren().addAll(createButtonBox, rightBox);
-        HBox.setHgrow(createButtonBox, Priority.ALWAYS);
+        contentBox.getChildren().addAll(leftBox, rightBox);
+        HBox.setHgrow(leftBox, Priority.ALWAYS);
         HBox.setHgrow(rightBox, Priority.ALWAYS);
         contentBox.setAlignment(Pos.TOP_CENTER);
         contentBox.setFillHeight(true);
@@ -53,6 +59,4 @@ public class Menu extends VBox {
         setVgrow(contentBox, Priority.ALWAYS);
         setPrefSize(700, 500);
     }
-
-
 }

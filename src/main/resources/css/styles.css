@@ -9,13 +9,16 @@
     -fx-font-size: 20px;
 }
 
-.menu-container {
-    -fx-min-width: 50px;
-    -fx-background-color: black;
-}
 
 .quiz-button {
     -fx-text-fill: snow;
+    -fx-font-size: 15px;
     -fx-padding: 5px;
     -fx-background-color: black;
+}
+
+.quiz-button:hover {
+    -fx-cursor: hand;
+    -fx-background-color: snow;
+    -fx-text-fill: black;
 }

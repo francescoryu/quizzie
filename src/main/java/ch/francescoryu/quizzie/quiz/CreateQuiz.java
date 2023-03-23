@@ -23,7 +23,6 @@ public class CreateQuiz {
             String[] values = row.split(", ");
             Button button = new Button(values[1]);
             button.setMinWidth(200);
-            button.setStyle("-fx-border-color: white");
             button.getStyleClass().add("quiz-button");
             buttons.add(button);
             vBox.getChildren().add(button);
