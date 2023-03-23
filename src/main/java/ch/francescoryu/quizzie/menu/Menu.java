@@ -36,11 +36,15 @@ public class Menu extends VBox {
         quizButtonBox.setAlignment(Pos.TOP_CENTER);
         ScrollPane scrollPane = new ScrollPane(quizButtonBox);
         scrollPane.setFitToWidth(true);
+        VBox rightBox = new VBox();
+        Label selectQuizLabel = new Label("Select Quiz");
+        rightBox.getChildren().addAll(selectQuizLabel, scrollPane);
+        rightBox.setAlignment(Pos.TOP_CENTER);
         //--------------------------------------------
         HBox contentBox = new HBox();
-        contentBox.getChildren().addAll(scrollPane, createButtonBox);
+        contentBox.getChildren().addAll(createButtonBox, rightBox);
         HBox.setHgrow(createButtonBox, Priority.ALWAYS);
-        HBox.setHgrow(scrollPane, Priority.ALWAYS);
+        HBox.setHgrow(rightBox, Priority.ALWAYS);
         contentBox.setAlignment(Pos.TOP_CENTER);
         contentBox.setFillHeight(true);
         //--------------------------------------------
