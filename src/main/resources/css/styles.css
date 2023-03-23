@@ -7,3 +7,14 @@
     -fx-text-fill: #CCCCCC;
     -fx-font-size: 20px;
 }
+
+.menu-container {
+    -fx-min-width: 50px;
+    -fx-background-color: black;
+}
+
+.quiz-button {
+    -fx-text-fill: snow;
+    -fx-padding: 5px;
+    -fx-background-color: black;
+}

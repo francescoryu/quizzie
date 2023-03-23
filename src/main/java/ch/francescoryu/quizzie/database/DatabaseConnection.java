@@ -72,8 +72,6 @@ public class DatabaseConnection {
                 rows.add(sb.toString());
             }
 
-            System.out.println("Count: " + count);
-
         } finally {
             if (preparedStatement != null) {
                 preparedStatement.close();
