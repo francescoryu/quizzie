@@ -1,5 +1,6 @@
-package ch.francescoryu.quizzie.login;
+package ch.francescoryu.quizzie.login.frontend;
 
+import ch.francescoryu.quizzie.login.backend.LoginValData;
 import ch.francescoryu.quizzie.quiz.CreateQuiz;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -10,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class Login extends VBox {
@@ -32,6 +34,13 @@ public class Login extends VBox {
         PasswordField passwordField = new PasswordField();
 
         Button loginButton = new Button("Login");
+        loginButton.setOnAction(actionEvent -> {
+            try {
+                LoginValData.checkLoginData(usernameInput.getText(), passwordField.getText());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         //------------------------------------------------------------
 

@@ -1,6 +1,6 @@
 package ch.francescoryu.quizzie;
 
-import ch.francescoryu.quizzie.login.Login;
+import ch.francescoryu.quizzie.login.frontend.Login;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

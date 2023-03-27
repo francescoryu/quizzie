@@ -2,6 +2,7 @@ package ch.francescoryu.quizzie.database;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class DatabaseConnection {
@@ -58,6 +59,45 @@ public class DatabaseConnection {
         int count = 0;
         try {
             preparedStatement = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStatement.executeQuery();
+
+            int columnCount = resultSet.getMetaData().getColumnCount();
+
+            while (resultSet.next()) {
+                count++;
+                StringBuilder sb = new StringBuilder();
+                for (int i = 1; i <= columnCount; i++) {
+                    sb.append(resultSet.getString(i)).append(", ");
+                }
+                sb.delete(sb.length() - 2, sb.length());
+                rows.add(sb.toString());
+            }
+
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            disconnectDatabase();
+        }
+
+        return rows;
+    }
+
+    public static ArrayList<String> readDataParams(String sqlQuery, List<Object> params) throws SQLException {
+        connectDatabase();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        ArrayList<String> rows = new ArrayList<>();
+        int count = 0;
+        try {
+            preparedStatement = connection.prepareStatement(sqlQuery);
+
+            // Set parameter values
+            int paramIndex = 1;
+            for (Object param : params) {
+                preparedStatement.setObject(paramIndex++, param);
+            }
+
             resultSet = preparedStatement.executeQuery();
 
             int columnCount = resultSet.getMetaData().getColumnCount();
