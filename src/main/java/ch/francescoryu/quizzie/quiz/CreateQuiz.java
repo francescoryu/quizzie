@@ -1,15 +1,11 @@
 package ch.francescoryu.quizzie.quiz;
 
 import ch.francescoryu.quizzie.database.DatabaseConnection;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class CreateQuiz {
