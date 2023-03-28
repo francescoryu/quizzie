@@ -18,16 +18,20 @@ public class LoginValData {
 
         DatabaseConnection.connectDatabase();
         resultSet = DatabaseConnection.readDataParams(sqlQuery, params);
+        String result = resultSet.get(0);
         if (resultSet.isEmpty()) {
             return "Invalid username/password";
         }
 
         else {
-            Main.closeStage(stage);
-            Stage MenuStage = new Stage();
-            MenuController menuController = new MenuController();
-            menuController.start(MenuStage);
-            return "Valid!";
+            if (result[3] == password) {
+                Main.closeStage(stage);
+                Stage MenuStage = new Stage();
+                MenuController menuController = new MenuController();
+                menuController.start(MenuStage);
+                return "Valid!";
+            }
         }
+        return "Error";
     }
 }
