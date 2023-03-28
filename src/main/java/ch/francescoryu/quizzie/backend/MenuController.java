@@ -11,7 +11,7 @@ public class MenuController extends Application {
     @Override
     public void start(Stage stage) throws SQLException {
         Menu menu = new Menu(stage);
-        Scene scene = new Scene(menu, 700, 500);
+        Scene scene = new Scene(menu, 950, 700);
         stage.setScene(scene);
         stage.show();
     }
