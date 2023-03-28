@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class LoginValData {
     public static String checkLoginData(String username, String password, Stage stage) throws SQLException {
@@ -18,20 +19,22 @@ public class LoginValData {
 
         DatabaseConnection.connectDatabase();
         resultSet = DatabaseConnection.readDataParams(sqlQuery, params);
-        String result = resultSet.get(0);
         if (resultSet.isEmpty()) {
+            DatabaseConnection.disconnectDatabase();
             return "Invalid username/password";
-        }
-
-        else {
-            if (result[3] == password) {
+        } else {
+            String result = resultSet.get(0);
+            if (Objects.equals(result.split(", ")[2], password)) {
+                DatabaseConnection.disconnectDatabase();
                 Main.closeStage(stage);
                 Stage MenuStage = new Stage();
                 MenuController menuController = new MenuController();
                 menuController.start(MenuStage);
                 return "Valid!";
+            } else {
+                DatabaseConnection.disconnectDatabase();
+                return "Invalid username/password";
             }
         }
-        return "Error";
     }
 }
