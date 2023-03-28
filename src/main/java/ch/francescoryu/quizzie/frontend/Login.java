@@ -1,7 +1,7 @@
-package ch.francescoryu.quizzie.login.frontend;
+package ch.francescoryu.quizzie.frontend;
 
-import ch.francescoryu.quizzie.login.backend.LoginValData;
-import ch.francescoryu.quizzie.quiz.CreateQuiz;
+import ch.francescoryu.quizzie.backend.LoginValData;
+import ch.francescoryu.quizzie.backend.quiz.CreateQuiz;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -10,12 +10,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.Objects;
 
 public class Login extends VBox {
-    public Login() {
+    public Login(Stage loginStage) {
         getStylesheets().add(Objects.requireNonNull(CreateQuiz.class.getResource("/css/styles.css")).toExternalForm());
 
         //------------------------------------------------------------
@@ -33,10 +34,15 @@ public class Login extends VBox {
         passwordLabel.getStyleClass().add("login-label");
         PasswordField passwordField = new PasswordField();
 
+        Text messageLogin = new Text();
+        messageLogin.setVisible(false);
+        messageLogin.getStyleClass().add("plain-text");
+
         Button loginButton = new Button("Login");
         loginButton.setOnAction(actionEvent -> {
             try {
-                LoginValData.checkLoginData(usernameInput.getText(), passwordField.getText());
+                messageLogin.setVisible(true);
+                messageLogin.setText(LoginValData.checkLoginData(usernameInput.getText(), passwordField.getText(), loginStage));
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -47,7 +53,7 @@ public class Login extends VBox {
         VBox fieldset = new VBox();
         fieldset.setStyle("-fx-border-color: #CCCCCC;");
         fieldset.setSpacing(10);
-        fieldset.getChildren().addAll(usernameLabel, usernameInput, passwordLabel, passwordField, loginButton);
+        fieldset.getChildren().addAll(usernameLabel, usernameInput, passwordLabel, passwordField, messageLogin, loginButton);
         fieldset.setAlignment(Pos.CENTER);
 
         //Set Margin for fieldset

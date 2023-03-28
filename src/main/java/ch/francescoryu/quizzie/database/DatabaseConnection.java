@@ -30,7 +30,6 @@ public class DatabaseConnection {
         }
     }
 
-
     public static void insertData(String sqlQuery, Object... values) throws SQLException {
         connectDatabase();
         PreparedStatement preparedStatement = null;
@@ -79,7 +78,6 @@ public class DatabaseConnection {
             }
             disconnectDatabase();
         }
-
         return rows;
     }
 

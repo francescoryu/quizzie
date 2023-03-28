@@ -1,4 +1,4 @@
-package ch.francescoryu.quizzie.quiz;
+package ch.francescoryu.quizzie.backend.quiz;
 
 import ch.francescoryu.quizzie.database.DatabaseConnection;
 import javafx.scene.control.Button;
@@ -14,6 +14,7 @@ public class CreateQuiz {
         vBox.getStylesheets().add(Objects.requireNonNull(CreateQuiz.class.getResource("/css/styles.css")).toExternalForm());
         ArrayList<String> rows = DatabaseConnection.readData("SELECT * FROM quiz");
         ArrayList<Button> buttons = new ArrayList<>();
+        buttons.clear();
 
         for (String row : rows) {
             String[] values = row.split(", ");

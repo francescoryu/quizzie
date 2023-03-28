@@ -1,6 +1,6 @@
-package ch.francescoryu.quizzie.menu;
+package ch.francescoryu.quizzie.frontend;
 
-import ch.francescoryu.quizzie.quiz.CreateQuiz;
+import ch.francescoryu.quizzie.backend.quiz.CreateQuiz;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,12 +8,14 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.Objects;
 
 public class Menu extends VBox {
-    public Menu() throws SQLException {
+
+    public Menu(Stage stage) throws SQLException {
         getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/styles.css")).toExternalForm());
         //--------------------------------------------
         Label welcomeLabel = new Label("Welcome");
@@ -57,6 +59,5 @@ public class Menu extends VBox {
         getStyleClass().add("menu-container");
         getChildren().addAll(hBox, contentBox);
         setVgrow(contentBox, Priority.ALWAYS);
-        setPrefSize(700, 500);
     }
 }
