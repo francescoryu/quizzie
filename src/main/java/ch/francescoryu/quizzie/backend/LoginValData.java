@@ -13,7 +13,7 @@ public class LoginValData {
     public static String checkLoginData(String username, String password, Stage stage) throws SQLException {
         String sqlQuery = "SELECT * FROM user WHERE username = ?";
         List<Object> params = new ArrayList<>();
-        List<String> resultSet = new ArrayList<>();
+        List<String> resultSet;
 
         params.add(username);
 
