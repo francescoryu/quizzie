@@ -1,6 +1,7 @@
 package ch.francescoryu.quizzie.frontend;
 
 import ch.francescoryu.quizzie.backend.LoginValData;
+import ch.francescoryu.quizzie.backend.animation.MorphBackground;
 import ch.francescoryu.quizzie.backend.quiz.CreateQuiz;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

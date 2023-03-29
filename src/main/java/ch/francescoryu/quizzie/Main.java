@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws SQLException {
         Login login = new Login(stage);
-        Scene scene = new Scene(login, 500, 500);
+        Scene scene = new Scene(login, 500, 420);
         stage.setScene(scene);
         stage.show();
     }
