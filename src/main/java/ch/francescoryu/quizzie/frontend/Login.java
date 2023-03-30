@@ -24,7 +24,6 @@ public class Login extends VBox {
         Label loginLabel = new Label("Login");
         Text text = new Text("Master your Quizzes");
         text.getStyleClass().add("plain-text");
-
         //------------------------------------------------------------
 
         Label usernameLabel = new Label("Username");
@@ -52,7 +51,7 @@ public class Login extends VBox {
         //------------------------------------------------------------
 
         VBox fieldset = new VBox();
-        fieldset.setStyle("-fx-border-color: #CCCCCC;");
+        fieldset.getStyleClass().add("fieldset");
         fieldset.setSpacing(10);
         fieldset.getChildren().addAll(usernameLabel, usernameInput, passwordLabel, passwordField, messageLogin, loginButton);
         fieldset.setAlignment(Pos.CENTER);
@@ -66,7 +65,7 @@ public class Login extends VBox {
 
         getChildren().addAll(loginLabel, fieldset, text);
         setSpacing(5);
-        setStyle("-fx-background-color: #30304D;");
+        setStyle("-fx-background-color: #439A97;");
         setAlignment(Pos.TOP_CENTER);
     }
 }
